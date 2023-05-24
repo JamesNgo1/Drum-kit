@@ -1,22 +1,24 @@
-var drumsLength = document.querySelectorAll(".drum").length;
 
-for(var i = 0; i < drumsLength; i++){
+//section for the case the user press the buttons 
+var buttonsLength = document.querySelectorAll(".drum").length;
+
+for(var i = 0; i < buttonsLength; i++){
     document.querySelectorAll(".drum")[i].addEventListener("click",function(){
-        var buttonPress = this.innerHTML;
-
-        makeSound(buttonPress);
-
-        
+        var buttonsHTML = this.innerHTML;
+        makeSound(buttonsHTML);
     })
 }
 
+
+//section for the case the user press the keyboard
+
 document.addEventListener("keypress", function(event){
-    makeSound(event.key);
+    var keyboardPress = event.key;
+    makeSound(keyboardPress);
+})
 
-});
 
-
-
+//function for the case of what sound to play 
 function makeSound(key){
     switch(key){
         case "w":
