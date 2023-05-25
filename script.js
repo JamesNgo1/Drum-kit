@@ -6,6 +6,8 @@ for(var i = 0; i < buttonsLength; i++){
     document.querySelectorAll(".drum")[i].addEventListener("click",function(){
         var buttonsHTML = this.innerHTML;
         makeSound(buttonsHTML);
+
+        buttonAnimation(buttonsHTML);
     })
 }
 
@@ -15,7 +17,9 @@ for(var i = 0; i < buttonsLength; i++){
 document.addEventListener("keypress", function(event){
     var keyboardPress = event.key;
     makeSound(keyboardPress);
-})
+
+    buttonAnimation(keyboardPress);
+});
 
 
 //function for the case of what sound to play 
@@ -50,8 +54,23 @@ function makeSound(key){
             kickBass.play();
             break;
         default:
+            alert("Invalid Key");
             console.log(buttonPress);
     }
+
+}
+
+function buttonAnimation(currentKey){
+
+    var activeButton = document.querySelector("." + currentKey);
+
+    activeButton.classList.add("pressed");
+
+
+    //settimeout(callback, delay)
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    }, 100);
 
 }
 
